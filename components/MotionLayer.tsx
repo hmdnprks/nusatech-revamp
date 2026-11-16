@@ -101,12 +101,8 @@ function playHero() {
     0.15,
   );
 
-  // Inside the tiles: code types in, the clock counts up, services report in.
-  tl.from(
-    "[data-code-line]",
-    { autoAlpha: 0, x: -8, duration: 0.25, stagger: 0.06 },
-    0.55,
-  );
+  // Inside the tiles: the clock counts up and services report in. The brand
+  // tile's logo assembles itself (LogoScene).
 
   const counter = document.querySelector<HTMLElement>("[data-count]");
   if (counter) {

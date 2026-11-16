@@ -1,4 +1,10 @@
-import { Check, Stack, Wallet, WhatsappLogo } from "@phosphor-icons/react/ssr";
+import {
+  Check,
+  Code,
+  Stack,
+  Wallet,
+  WhatsappLogo,
+} from "@phosphor-icons/react/ssr";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { certifications, contact, whatsappHref } from "@/lib/content";
 
@@ -26,7 +32,18 @@ export async function Services() {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div
+            data-reveal="drop"
+            className="tile p-7 sm:col-span-2 md:col-span-1"
+          >
+            <div className="grid size-12 place-items-center rounded-[14px] bg-ink text-white">
+              <Code size={24} weight="bold" aria-hidden="true" />
+            </div>
+            <h3 className="mt-6 text-[22px]">{t.clean.title}</h3>
+            <p className="mt-1.5 text-[15px] text-body">{t.clean.body}</p>
+          </div>
+
           <div data-reveal="drop" className="tile p-7">
             <div className="grid size-12 place-items-center rounded-[14px] bg-sky-50 text-blue">
               <Stack size={24} weight="duotone" />
@@ -45,7 +62,7 @@ export async function Services() {
 
           <div
             data-reveal="drop"
-            className="tile grid items-center gap-6 p-7 sm:col-span-2 md:grid-cols-2"
+            className="tile grid items-center gap-6 p-7 sm:col-span-2 md:col-span-3 md:grid-cols-2"
           >
             <div>
               <h3 className="text-[22px]">{t.response.title}</h3>

@@ -33,9 +33,10 @@ const en = {
     body: "Whether you're revamping an existing system or starting something new, our team designs, builds and runs it with you, from first requirement to the cloud.",
     primary: "Discuss your project",
     secondary: "See our work",
-    cleanCode: {
-      title: "Clean Code",
-      body: "Stable, readable, easy to scale.",
+    brand: {
+      // The company's own tagline, kept in English in every locale.
+      title: "Transforming ideas into digital success",
+      body: "Systems for universities, foundations and growing businesses since 2020.",
     },
     service: {
       title: "24H Service",
@@ -55,6 +56,10 @@ const en = {
     title: ["What you can", "expect from us"],
     intro:
       "Six commitments behind every project, from the first line of code to long after launch.",
+    clean: {
+      title: "Clean Code",
+      body: "Stable, readable code that is easy to scale and hand over.",
+    },
     modern: {
       title: "Modern Development",
       body: "Current frameworks and practices, so your product stays ahead of the curve.",

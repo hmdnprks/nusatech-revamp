@@ -35,9 +35,9 @@ const id: Dictionary = {
     body: "Mau memperbarui sistem lama atau membangun yang baru? Tim kami merancang, membangun, dan menjalankannya bersama Anda, dari kebutuhan awal hingga berjalan di cloud.",
     primary: "Diskusikan proyek Anda",
     secondary: "Lihat portofolio",
-    cleanCode: {
-      title: "Kode yang Rapi",
-      body: "Stabil, mudah dibaca, dan siap dikembangkan.",
+    brand: {
+      title: "Transforming ideas into digital success",
+      body: "Sistem untuk universitas, lembaga, dan bisnis yang bertumbuh sejak 2020.",
     },
     service: {
       title: "Layanan 24 Jam",
@@ -57,6 +57,10 @@ const id: Dictionary = {
     title: ["Yang Anda dapatkan", "dari kami"],
     intro:
       "Enam komitmen di balik setiap proyek, dari baris kode pertama hingga lama setelah peluncuran.",
+    clean: {
+      title: "Kode yang Rapi",
+      body: "Kode yang stabil, mudah dibaca, siap dikembangkan dan diserahterimakan.",
+    },
     modern: {
       title: "Pengembangan Modern",
       body: "Framework dan praktik terkini, agar produk Anda selalu selangkah di depan.",
