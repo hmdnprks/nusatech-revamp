@@ -1,31 +1,8 @@
 import { ArrowDown, WhatsappLogo } from "@phosphor-icons/react/ssr";
 import { Fragment } from "react";
+import { LogoScene } from "@/components/LogoScene";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { whatsappHref } from "@/lib/content";
-
-const code = [
-  <span key="1" className="text-[#7f8ea0]">
-    {"// screening.ts"}
-  </span>,
-  <>
-    <span className="text-sky">export async function</span> score(answers) {"{"}
-  </>,
-  <>
-    {"  "}
-    <span className="text-sky">const</span> total = answers.reduce(sum, 0);
-  </>,
-  <>
-    {"  "}
-    <span className="text-sky">return</span> total &gt; cutoff
-  </>,
-  <>
-    {"    "}? <span className="text-sun">&apos;follow-up&apos;</span>
-  </>,
-  <>
-    {"    "}: <span className="text-sun">&apos;healthy&apos;</span>;
-  </>,
-  <>{"}"}</>,
-];
 
 export async function Hero() {
   const dict = await getDictionary();
@@ -36,10 +13,12 @@ export async function Hero() {
     <section id="home" className="mx-auto max-w-[1240px] px-5 pt-3 md:px-8">
       <div className="grid gap-4 lg:grid-cols-[1.25fr_1fr_1fr] lg:grid-rows-[minmax(300px,auto)_minmax(280px,auto)]">
         {/* Headline tile */}
-        <div className="tile flex flex-col p-7 sm:p-10 lg:row-span-2 lg:p-12">
+        <div className="tile flex min-w-0 flex-col p-6 sm:p-10 lg:row-span-2 xl:p-12">
+          {/* Sized so the longest Indonesian word ("pengembangan") fits its
+              column at every width, down to 320px. */}
           <h1
             data-hero-item="title"
-            className="text-[40px] leading-[1.06] sm:text-[52px] xl:text-[54px] xl:leading-[1.05]"
+            className="text-[clamp(30px,9.6vw,40px)] leading-[1.06] sm:text-[52px] lg:text-[40px] xl:text-[48px] xl:leading-[1.05]"
           >
             {t.titleLines.map((line, i) => (
               <span key={i} className={line.accent ? "text-blue" : undefined}>
@@ -76,27 +55,19 @@ export async function Hero() {
           </div>
         </div>
 
-        {/* Clean code */}
+        {/* Brand tile: the logo as a 3D object, the company's own tagline beside it */}
         <div
           data-hero-item="tile"
-          className="tile relative flex flex-col justify-end sm:min-h-[300px] overflow-hidden border-ink bg-ink p-6 text-white sm:p-7 lg:col-span-2"
+          data-logo-tile
+          className="tile relative grid min-w-0 overflow-hidden border-ink bg-ink text-white sm:grid-cols-[1fr_1.1fr] lg:col-span-2"
         >
-          <pre
-            aria-hidden="true"
-            className="mb-6 overflow-hidden rounded-[14px] bg-code px-4 py-4 font-mono text-[12px] leading-[1.75] text-[#cfe3f2] sm:absolute sm:top-6 sm:right-6 sm:mb-0 sm:w-[420px] sm:px-5 sm:text-[13px]"
-          >
-            {code.map((line, i) => (
-              <span key={i} data-code-line className="block">
-                {line}
-              </span>
-            ))}
-          </pre>
-          <div className="relative">
-            <h2 className="text-[22px]">{t.cleanCode.title}</h2>
-            <p className="mt-1 text-[15px] text-[#a8b4c3]">
-              {t.cleanCode.body}
-            </p>
+          <div className="order-2 flex flex-col justify-end p-6 sm:order-1 sm:p-7">
+            <h2 className="text-[24px] leading-[1.15] sm:text-[26px]">
+              {t.brand.title}
+            </h2>
+            <p className="mt-2 text-[15px] text-[#a8b4c3]">{t.brand.body}</p>
           </div>
+          <LogoScene className="order-1 h-[220px] sm:order-2 sm:h-auto sm:min-h-[300px]" />
         </div>
 
         {/* 24H service */}
