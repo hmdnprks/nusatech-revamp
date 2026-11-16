@@ -45,7 +45,7 @@ export function MotionLayer() {
     });
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      lenis = new Lenis({ lerp: 0.12 });
+      lenis = new Lenis({ lerp: 0.12, anchors: { offset: HEADER_OFFSET } });
       lenis.on("scroll", ScrollTrigger.update);
       const raf = (t: number) => lenis?.raf(t * 1000);
       gsap.ticker.add(raf);

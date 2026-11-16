@@ -1,16 +1,12 @@
+import { LogoMark } from "@/components/Logo";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { projects, type Tint } from "@/lib/content";
 
+// Sky marks institutional clients (universities), sun marks community and
+// commerce clients. Flat tints only, see DESIGN.md.
 const thumb: Record<Tint, string> = {
-  sky: "bg-[linear-gradient(135deg,#cfebff,#e9f6ff)]",
-  mint: "bg-[linear-gradient(135deg,#ddf4e9,#f0faf5)]",
-  sun: "bg-[linear-gradient(135deg,#ffefc2,#fff8e4)]",
-};
-
-const accent: Record<Tint, string> = {
-  sky: "bg-blue",
-  mint: "bg-mint",
-  sun: "bg-sun",
+  sky: "bg-sky-50",
+  sun: "bg-sun-50",
 };
 
 export async function Work() {
@@ -41,35 +37,29 @@ export async function Work() {
         data-reveal-group
         className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
       >
-        {projects.map((p, i) => (
+        {projects.map((p) => (
           <li
             key={p.key}
             data-reveal="drop"
             className="tile flex flex-col p-2.5"
           >
+            {/* TODO: replace with real project screenshots once provided.
+                Until then the thumbnail is typographic (client initials),
+                so nothing pretends to be a product shot. */}
             <div data-reveal="mask" className="overflow-hidden rounded-[16px]">
-              <div className={`relative h-[180px] ${thumb[p.tint]}`}>
+              <div
+                className={`relative flex h-[180px] items-end p-5 ${thumb[p.tint]}`}
+              >
                 <span className="absolute top-3.5 left-3.5 rounded-full bg-white/90 px-3 py-1 text-[13px]">
                   {t.sectors[p.sector]}
                 </span>
-                <div
+                <LogoMark className="pointer-events-none absolute -right-6 -bottom-8 w-[170px] opacity-[0.12]" />
+                <span
                   aria-hidden="true"
-                  className="absolute right-10 -bottom-2.5 left-10 h-[112px] rounded-t-[12px] bg-white p-3.5 shadow-[0_10px_30px_-10px_rgb(16_27_43/0.2)]"
+                  className="relative text-[56px] leading-none font-semibold tracking-[-0.03em] text-navy"
                 >
-                  <div className="flex items-center gap-2">
-                    <i className={`size-3 rounded-full ${accent[p.tint]}`} />
-                    <i className="h-2.5 w-1/3 rounded-full bg-line" />
-                  </div>
-                  <i
-                    className="mt-3 block h-2.5 rounded-full bg-line"
-                    style={{ width: `${70 + ((i * 13) % 25)}%` }}
-                  />
-                  <i
-                    className="mt-2 block h-2.5 rounded-full bg-line"
-                    style={{ width: `${45 + ((i * 17) % 40)}%` }}
-                  />
-                  <i className="mt-2 block h-2.5 w-full rounded-full bg-line" />
-                </div>
+                  {p.short}
+                </span>
               </div>
             </div>
             <div className="flex flex-1 flex-col px-3 pt-4 pb-3">

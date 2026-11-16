@@ -19,6 +19,7 @@
   --color-sun-50: #fff6dc;
   --color-sun-100: #f6e3aa;
   --color-sun-ink: #7a5000;
+  /* Mint is semantic only: "healthy / done / live" states. */
   --color-mint: #11845a;
   --color-mint-50: #e4f7ef;
   --color-code: #1a2738;
@@ -50,6 +51,18 @@
   }
   p {
     text-wrap: pretty;
+  }
+  /* Tailwind v4 preflight leaves buttons on the default cursor. */
+  a[href],
+  button:not(:disabled),
+  summary,
+  select,
+  label[for],
+  [role="button"] {
+    cursor: pointer;
+  }
+  :disabled {
+    cursor: not-allowed;
   }
   :focus-visible {
     outline: 2px solid var(--color-blue);

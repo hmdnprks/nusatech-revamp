@@ -141,10 +141,10 @@ export function Header({
               href={`#${item.id}`}
               onClick={go(item.id)}
               aria-current={active === item.id ? "true" : undefined}
-              className={`relative rounded-[10px] px-4 py-2 text-[15px] transition-colors ${
+              className={`relative rounded-[10px] px-4 py-2.5 text-[15px] underline-offset-4 transition-colors ${
                 active === item.id
                   ? "font-medium text-ink"
-                  : "text-body hover:text-ink"
+                  : "text-body hover:text-ink hover:underline"
               }`}
             >
               {item.label}
@@ -158,7 +158,7 @@ export function Header({
           rel="noopener"
           className="btn btn-dark hidden h-[46px] lg:inline-flex"
         >
-          {t.getStarted}
+          {t.cta}
         </a>
 
         <LanguageSwitcher
@@ -175,16 +175,20 @@ export function Header({
           aria-label={open ? t.closeMenu : t.openMenu}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X size={22} /> : <List size={22} />}
+          {open ? (
+            <X size={22} aria-hidden="true" />
+          ) : (
+            <List size={22} aria-hidden="true" />
+          )}
         </button>
       </div>
 
+      {/* Closed menu is inert: out of the tab order and hidden from screen readers. */}
       <div
         id="mobile-menu"
+        inert={!open}
         className={`overflow-hidden border-line px-5 transition-[max-height,opacity] duration-300 ease-out lg:hidden ${
-          open
-            ? "max-h-[420px] border-b opacity-100"
-            : "pointer-events-none max-h-0 opacity-0"
+          open ? "max-h-[420px] border-b opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav aria-label={t.main} className="flex flex-col pb-5">
@@ -193,8 +197,11 @@ export function Header({
               key={item.id}
               href={`#${item.id}`}
               onClick={go(item.id)}
-              tabIndex={open ? 0 : -1}
-              className={`rounded-[12px] px-4 py-3 text-[17px] ${active === item.id ? "bg-sky-50 font-medium" : "text-body"}`}
+              className={`rounded-[12px] px-4 py-3 text-[17px] underline-offset-4 ${
+                active === item.id
+                  ? "bg-sky-50 font-medium"
+                  : "text-body hover:underline"
+              }`}
             >
               {item.label}
             </a>
@@ -203,10 +210,9 @@ export function Header({
             href={whatsapp}
             target="_blank"
             rel="noopener"
-            tabIndex={open ? 0 : -1}
             className="btn btn-dark mt-3"
           >
-            {t.getStarted}
+            {t.cta}
           </a>
         </nav>
       </div>
