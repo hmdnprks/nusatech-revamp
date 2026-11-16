@@ -1,9 +1,10 @@
-import { Check, Stack, Wallet } from "@phosphor-icons/react/ssr";
+import { Check, Stack, Wallet, WhatsappLogo } from "@phosphor-icons/react/ssr";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { certifications } from "@/lib/content";
+import { certifications, contact, whatsappHref } from "@/lib/content";
 
 export async function Services() {
-  const t = (await getDictionary()).services;
+  const dict = await getDictionary();
+  const t = dict.services;
 
   return (
     <section
@@ -50,17 +51,22 @@ export async function Services() {
               <h3 className="text-[22px]">{t.response.title}</h3>
               <p className="mt-1.5 text-[15px] text-body">{t.response.body}</p>
             </div>
-            <div
-              aria-hidden="true"
-              className="grid gap-2 rounded-[16px] bg-bg p-4 text-[14px]"
+            <a
+              href={whatsappHref(dict.whatsappMessage)}
+              target="_blank"
+              rel="noopener"
+              className="group flex min-h-11 items-center gap-3.5 rounded-[16px] bg-bg p-4 transition-colors hover:bg-sky-50"
             >
-              <div className="mr-8 rounded-[12px] rounded-bl-[4px] bg-card px-3.5 py-2.5">
-                {t.response.ask}
-              </div>
-              <div className="ml-8 rounded-[12px] rounded-br-[4px] bg-ink px-3.5 py-2.5 text-white">
-                {t.response.reply}
-              </div>
-            </div>
+              <span className="grid size-11 shrink-0 place-items-center rounded-[12px] bg-ink text-white">
+                <WhatsappLogo size={22} aria-hidden="true" />
+              </span>
+              <span className="text-[14px] text-body">
+                {t.response.channel}
+                <b className="block text-[16px] font-semibold text-ink group-hover:underline">
+                  {contact.phoneDisplay}
+                </b>
+              </span>
+            </a>
           </div>
         </div>
       </div>

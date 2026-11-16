@@ -13,7 +13,7 @@ const en = {
     process: "Process",
     work: "Work",
     contact: "Contact",
-    getStarted: "Get Started",
+    cta: "Discuss your project",
     openMenu: "Open menu",
     closeMenu: "Close menu",
     main: "Main",
@@ -27,9 +27,9 @@ const en = {
       { text: "application development", accent: true },
       { text: "challenges" },
     ],
-    body: "Whether you're revamping an existing system or starting something new, our team designs, builds and runs it with you — from first requirement to the cloud.",
-    contact: "Contact Us",
-    whatsapp: "WhatsApp",
+    body: "Whether you're revamping an existing system or starting something new, our team designs, builds and runs it with you, from first requirement to the cloud.",
+    primary: "Discuss your project",
+    secondary: "See our work",
     cleanCode: {
       title: "Clean Code",
       body: "Stable, readable, easy to scale.",
@@ -47,12 +47,11 @@ const en = {
         { name: "Backups", ok: "Daily" },
       ],
     },
-    certifiedBy: "Our team is certified by",
   },
   services: {
     title: ["What you can", "expect from us"],
     intro:
-      "Six commitments behind every project — from the first line of code to long after launch.",
+      "Six commitments behind every project, from the first line of code to long after launch.",
     modern: {
       title: "Modern Development",
       body: "Current frameworks and practices, so your product stays ahead of the curve.",
@@ -64,12 +63,11 @@ const en = {
     response: {
       title: "Faster Response",
       body: "Quick turnaround on your requests, and fast-loading applications for your users.",
-      ask: "Can we add an export button to the report page?",
-      reply: "On it — you'll get a preview link to try first.",
+      channel: "Reach the team directly on WhatsApp",
     },
     why: {
       title: "Why Nusatech?",
-      body: "We're your partner for IT consulting and custom application development. Collaborators, not just vendors — we start from your goals, build what fits, and stay with you after launch.",
+      body: "We're your partner for IT consulting and custom application development. Collaborators, not just vendors: we start from your goals, build what fits, and stay with you after launch.",
       points: [
         "Client-centric from day one",
         "Built for long-term growth",
@@ -82,7 +80,7 @@ const en = {
     },
     audience: {
       title: "Who we build for",
-      body: "Technology with a positive social impact — for institutions and businesses alike.",
+      body: "Technology with a positive social impact, for institutions and businesses alike.",
       sectors: [
         { term: "Education", detail: "Universities" },
         { term: "Health", detail: "Screening & care" },
@@ -98,7 +96,7 @@ const en = {
     steps: [
       {
         title: "Requirements",
-        body: "Workshops with your team to map users, goals and scope — before a single screen is drawn.",
+        body: "Workshops with your team to map users, goals and scope, before a single screen is drawn.",
       },
       {
         title: "Development",
@@ -110,7 +108,7 @@ const en = {
       },
       {
         title: "Launch & support",
-        body: "Cloud deployment, monitoring and maintenance — we stay on after go-live.",
+        body: "Cloud deployment, monitoring and maintenance. We stay on after go-live.",
       },
     ],
     card: {
@@ -124,7 +122,7 @@ const en = {
       sprint: "sprint 3 · demo ready",
       checklist: "Release checklist",
       checks: ["UAT passed", "Security check", "Data migrated"],
-      deployed: "Deployed to the cloud · monitored 24/7",
+      deployed: "Live in the cloud · maintained after launch",
     },
   },
   work: {
@@ -153,7 +151,7 @@ const en = {
   },
   contact: {
     title: "Ready to get started?",
-    body: "Have a digital idea? Tell us about it — we'll help shape it into a product your users love.",
+    body: "Have a digital idea? Tell us about it, and we'll help shape it into a product your users love.",
     cta: "Chat on WhatsApp",
     phone: "Phone",
     email: "Email",

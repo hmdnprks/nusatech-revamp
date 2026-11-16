@@ -31,7 +31,7 @@ export function LanguageSwitcher({
     <div
       role="group"
       aria-label={label}
-      className={`flex rounded-[12px] border border-line bg-card p-1 text-[14px] ${className}`}
+      className={`flex rounded-[14px] border border-line bg-card p-0.5 text-[14px] ${className}`}
     >
       {locales.map((locale) => {
         const active = locale === current;
@@ -45,8 +45,10 @@ export function LanguageSwitcher({
             aria-label={labels[locale].name}
             aria-current={active ? "true" : undefined}
             onClick={choose(locale)}
-            className={`rounded-[9px] px-2.5 py-1.5 font-medium transition-colors ${
-              active ? "bg-ink text-white" : "text-body hover:text-ink"
+            className={`grid min-h-11 min-w-11 place-items-center rounded-[11px] px-2.5 font-medium underline-offset-4 transition-colors ${
+              active
+                ? "bg-ink text-white"
+                : "text-body hover:text-ink hover:underline"
             }`}
           >
             {labels[locale].short}

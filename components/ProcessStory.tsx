@@ -14,7 +14,7 @@ type Copy = Dictionary["process"];
 const statuses = [
   { key: "draft", className: "bg-sun-50 text-sun-ink" },
   { key: "build", className: "bg-sky-50 text-blue-ink" },
-  { key: "test", className: "bg-[#efe9ff] text-[#5b3fb0]" },
+  { key: "test", className: "bg-ink text-white" },
   { key: "live", className: "bg-mint-50 text-mint" },
 ] as const;
 
@@ -272,7 +272,7 @@ function AppCard({ t }: { t: Copy["card"] }) {
             <div className="grid grid-cols-3 gap-3">
               <Box className="h-16" fill="bg-sky-50" />
               <Box className="h-16" fill="bg-sun-50" />
-              <Box className="h-16" fill="bg-mint-50" />
+              <Box className="h-16" fill="bg-sky-100" />
             </div>
             <div className="relative flex-1 rounded-[12px] border border-dashed border-[#c5d0db]">
               <div

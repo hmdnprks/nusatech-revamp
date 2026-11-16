@@ -1,4 +1,4 @@
-import { ArrowRight, WhatsappLogo } from "@phosphor-icons/react/ssr";
+import { ArrowDown, WhatsappLogo } from "@phosphor-icons/react/ssr";
 import { Fragment } from "react";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { whatsappHref } from "@/lib/content";
@@ -68,15 +68,10 @@ export async function Hero() {
               rel="noopener"
               className="btn btn-dark"
             >
-              {t.contact} <ArrowRight size={20} />
+              <WhatsappLogo size={20} aria-hidden="true" /> {t.primary}
             </a>
-            <a
-              href={whatsapp}
-              target="_blank"
-              rel="noopener"
-              className="btn btn-soft"
-            >
-              <WhatsappLogo size={20} /> {t.whatsapp}
+            <a href="#work" className="btn btn-soft">
+              {t.secondary} <ArrowDown size={18} aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -97,7 +92,7 @@ export async function Hero() {
             ))}
           </pre>
           <div className="relative">
-            <h3 className="text-[22px]">{t.cleanCode.title}</h3>
+            <h2 className="text-[22px]">{t.cleanCode.title}</h2>
             <p className="mt-1 text-[15px] text-[#a8b4c3]">
               {t.cleanCode.body}
             </p>
@@ -109,7 +104,7 @@ export async function Hero() {
           data-hero-item="tile"
           className="tile border-sun-100 bg-sun-50 p-6 sm:p-7"
         >
-          <h3 className="text-[22px]">{t.service.title}</h3>
+          <h2 className="text-[22px]">{t.service.title}</h2>
           <p className="mt-4 text-[76px] leading-none font-semibold tracking-[-0.04em] text-ink tabular-nums">
             <span data-count="24">24</span>/7
           </p>
@@ -121,7 +116,7 @@ export async function Hero() {
           data-hero-item="tile"
           className="tile border-sky-100 bg-sky-50 p-6 sm:p-7"
         >
-          <h3 className="text-[22px]">{t.cloud.title}</h3>
+          <h2 className="text-[22px]">{t.cloud.title}</h2>
           <ul className="mt-4 grid gap-2">
             {t.cloud.services.map((s) => (
               <li
@@ -142,20 +137,6 @@ export async function Hero() {
             ))}
           </ul>
         </div>
-      </div>
-
-      <div
-        data-reveal="rise"
-        className="flex flex-wrap items-center gap-x-10 gap-y-3 px-2 pt-9 pb-2 text-[15px] text-body md:gap-x-14"
-      >
-        <span>{t.certifiedBy}</span>
-        {["AWS", "Google Cloud", "Scrum.org", "Oracle", "Hacktiv8"].map(
-          (name) => (
-            <b key={name} className="text-[19px] font-semibold text-[#5c6b7b]">
-              {name}
-            </b>
-          ),
-        )}
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { Contact } from "@/components/Contact";
+import { Contact, SiteFooter } from "@/components/Contact";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { MotionLayer } from "@/components/MotionLayer";
@@ -26,6 +26,7 @@ export default async function Home() {
         <Work />
         <Contact />
       </main>
+      <SiteFooter />
       {/* Last, so every section's scroll triggers exist before positions are measured. */}
       <MotionLayer />
     </>
