@@ -1,7 +1,10 @@
 import { Check, Stack, Wallet } from "@phosphor-icons/react/ssr";
+import { getDictionary } from "@/i18n/get-dictionary";
 import { certifications } from "@/lib/content";
 
-export function Services() {
+export async function Services() {
+  const t = (await getDictionary()).services;
+
   return (
     <section
       id="services"
@@ -13,13 +16,12 @@ export function Services() {
             data-reveal="rise"
             className="text-[36px] leading-[1.08] md:text-[46px]"
           >
-            What you can
+            {t.title[0]}
             <br />
-            expect from us
+            {t.title[1]}
           </h2>
           <p data-reveal="rise" className="max-w-[420px] text-body">
-            Six commitments behind every project — from the first line of code
-            to long after launch.
+            {t.intro}
           </p>
         </div>
 
@@ -28,21 +30,16 @@ export function Services() {
             <div className="grid size-12 place-items-center rounded-[14px] bg-sky-50 text-blue">
               <Stack size={24} weight="duotone" />
             </div>
-            <h3 className="mt-6 text-[22px]">Modern Development</h3>
-            <p className="mt-1.5 text-[15px] text-body">
-              Current frameworks and practices, so your product stays ahead of
-              the curve.
-            </p>
+            <h3 className="mt-6 text-[22px]">{t.modern.title}</h3>
+            <p className="mt-1.5 text-[15px] text-body">{t.modern.body}</p>
           </div>
 
           <div data-reveal="drop" className="tile p-7">
             <div className="grid size-12 place-items-center rounded-[14px] bg-sun-50 text-sun-ink">
               <Wallet size={24} weight="duotone" />
             </div>
-            <h3 className="mt-6 text-[22px]">Value for Money</h3>
-            <p className="mt-1.5 text-[15px] text-body">
-              Cost-effective solutions, without compromising on quality.
-            </p>
+            <h3 className="mt-6 text-[22px]">{t.value.title}</h3>
+            <p className="mt-1.5 text-[15px] text-body">{t.value.body}</p>
           </div>
 
           <div
@@ -50,21 +47,18 @@ export function Services() {
             className="tile grid items-center gap-6 p-7 sm:col-span-2 md:grid-cols-2"
           >
             <div>
-              <h3 className="text-[22px]">Faster Response</h3>
-              <p className="mt-1.5 text-[15px] text-body">
-                Quick turnaround on your requests, and fast-loading applications
-                for your users.
-              </p>
+              <h3 className="text-[22px]">{t.response.title}</h3>
+              <p className="mt-1.5 text-[15px] text-body">{t.response.body}</p>
             </div>
             <div
               aria-hidden="true"
               className="grid gap-2 rounded-[16px] bg-bg p-4 text-[14px]"
             >
               <div className="mr-8 rounded-[12px] rounded-bl-[4px] bg-card px-3.5 py-2.5">
-                Can we add an export button to the report page?
+                {t.response.ask}
               </div>
               <div className="ml-8 rounded-[12px] rounded-br-[4px] bg-ink px-3.5 py-2.5 text-white">
-                On it — you&apos;ll get a preview link to try first.
+                {t.response.reply}
               </div>
             </div>
           </div>
@@ -77,19 +71,11 @@ export function Services() {
           className="tile flex flex-col border-navy bg-navy p-8 text-white md:p-11"
         >
           <h2 className="text-[32px] leading-[1.1] md:text-[36px]">
-            Why Nusatech?
+            {t.why.title}
           </h2>
-          <p className="mt-4 text-[#c6dcec]">
-            We&apos;re your partner for IT consulting and custom application
-            development. Collaborators, not just vendors — we start from your
-            goals, build what fits, and stay with you after launch.
-          </p>
+          <p className="mt-4 text-[#c6dcec]">{t.why.body}</p>
           <ul className="mt-10 grid gap-2.5 lg:mt-auto">
-            {[
-              "Client-centric from day one",
-              "Built for long-term growth",
-              "Ongoing support after go-live",
-            ].map((item) => (
+            {t.why.points.map((item) => (
               <li
                 key={item}
                 className="flex items-center gap-3 rounded-[14px] bg-white/[.08] px-4.5 py-4"
@@ -103,12 +89,9 @@ export function Services() {
 
         <div data-reveal="drop" className="tile p-8 md:p-11">
           <h2 className="text-[32px] leading-[1.1] md:text-[36px]">
-            Experienced and certified professionals
+            {t.certified.title}
           </h2>
-          <p className="mt-3.5 text-body">
-            More than five years of app development experience across the team,
-            with certifications from leading cloud and agile organisations.
-          </p>
+          <p className="mt-3.5 text-body">{t.certified.body}</p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {certifications.map((c) => (
               <li
@@ -129,20 +112,12 @@ export function Services() {
         >
           <div>
             <h2 className="text-[32px] leading-[1.1] md:text-[36px]">
-              Who we build for
+              {t.audience.title}
             </h2>
-            <p className="mt-3.5 text-body">
-              Technology with a positive social impact — for institutions and
-              businesses alike.
-            </p>
+            <p className="mt-3.5 text-body">{t.audience.body}</p>
           </div>
           <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {[
-              ["Education", "Universities"],
-              ["Health", "Screening & care"],
-              ["Social", "Zakat & giving"],
-              ["Business", "Retail & SMEs"],
-            ].map(([term, detail]) => (
+            {t.audience.sectors.map(({ term, detail }) => (
               <div
                 key={term}
                 data-reveal="pop"

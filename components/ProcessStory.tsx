@@ -5,24 +5,25 @@ import { Check, CloudCheck } from "@phosphor-icons/react/ssr";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import { processSteps } from "@/lib/content";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+type Copy = Dictionary["process"];
+
 const statuses = [
-  { key: "draft", label: "Draft", className: "bg-sun-50 text-sun-ink" },
-  { key: "build", label: "Sprint 3", className: "bg-sky-50 text-blue-ink" },
-  { key: "test", label: "In UAT", className: "bg-[#efe9ff] text-[#5b3fb0]" },
-  { key: "live", label: "Live", className: "bg-mint-50 text-mint" },
+  { key: "draft", className: "bg-sun-50 text-sun-ink" },
+  { key: "build", className: "bg-sky-50 text-blue-ink" },
+  { key: "test", className: "bg-[#efe9ff] text-[#5b3fb0]" },
+  { key: "live", className: "bg-mint-50 text-mint" },
+] as const;
+
+const notePlacement = [
+  "left-[8%] top-[30%] -rotate-3",
+  "right-[6%] top-[22%] rotate-2",
+  "right-[14%] bottom-[12%] -rotate-2",
 ];
 
-const notes = [
-  { text: "Who uses it?", className: "left-[8%] top-[30%] -rotate-3" },
-  { text: "Must work on mobile", className: "right-[6%] top-[22%] rotate-2" },
-  { text: "Export to PDF", className: "right-[14%] bottom-[12%] -rotate-2" },
-];
-
-const checks = ["UAT passed", "Security check", "Data migrated"];
 const bars = [38, 56, 44, 82, 64, 72, 52, 90];
 
 /**
@@ -30,7 +31,7 @@ const bars = [38, 56, 44, 82, 64, 72, 52, 90];
  * pins and the scroll position moves the app from wireframe to live. Elsewhere, and
  * with reduced motion, the steps read as a list and the app is shown finished.
  */
-export function ProcessStory() {
+export function ProcessStory({ t }: { t: Copy }) {
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -192,11 +193,10 @@ export function ProcessStory() {
           data-reveal="rise"
           className="text-[36px] leading-[1.08] md:text-[46px]"
         >
-          Our Process
+          {t.title}
         </h2>
         <p data-reveal="rise" className="max-w-[420px] text-body">
-          A clear path from idea to a running product. Here&apos;s what happens
-          to your app along the way.
+          {t.intro}
         </p>
       </div>
 
@@ -210,8 +210,8 @@ export function ProcessStory() {
             aria-hidden="true"
             className="absolute top-0 right-0 left-0 hidden rounded-[18px] border border-line bg-card lg:block"
           />
-          {processSteps.map((s, i) => (
-            <li key={s.key} data-step className="relative rounded-[18px] p-5">
+          {t.steps.map((s, i) => (
+            <li key={i} data-step className="relative rounded-[18px] p-5">
               <div data-step-body>
                 <span className="text-[14px] font-semibold text-blue-ink tabular-nums">
                   0{i + 1}
@@ -223,13 +223,13 @@ export function ProcessStory() {
           ))}
         </ol>
 
-        <AppCard />
+        <AppCard t={t.card} />
       </div>
     </section>
   );
 }
 
-function AppCard() {
+function AppCard({ t }: { t: Copy["card"] }) {
   return (
     <div className="relative" aria-hidden="true">
       <div
@@ -253,7 +253,7 @@ function AppCard() {
                   s.key === "live" ? "" : "invisible"
                 }`}
               >
-                {s.label}
+                {t.statuses[s.key]}
               </span>
             ))}
           </span>
@@ -293,13 +293,13 @@ function AppCard() {
         </div>
 
         {/* Requirements: sticky notes from the kickoff workshop */}
-        {notes.map((n) => (
+        {t.notes.map((text, i) => (
           <span
-            key={n.text}
+            key={text}
             data-note
-            className={`invisible absolute rounded-[6px] bg-sun px-3.5 py-2.5 text-[14px] font-medium shadow-[0_8px_18px_-8px_rgb(122_80_0/0.5)] ${n.className}`}
+            className={`invisible absolute rounded-[6px] bg-sun px-3.5 py-2.5 text-[14px] font-medium shadow-[0_8px_18px_-8px_rgb(122_80_0/0.5)] ${notePlacement[i]}`}
           >
-            {n.text}
+            {text}
           </span>
         ))}
 
@@ -308,7 +308,7 @@ function AppCard() {
           data-sprint
           className="invisible absolute bottom-5 left-[170px] rounded-full bg-ink px-3.5 py-1.5 font-mono text-[13px] text-white"
         >
-          sprint 3 · demo ready
+          {t.sprint}
         </span>
 
         {/* Testing: checklist */}
@@ -316,11 +316,9 @@ function AppCard() {
           data-checks
           className="invisible absolute top-16 right-5 w-[220px] rounded-[16px] border border-line bg-card p-4 shadow-[0_20px_40px_-20px_rgb(16_27_43/0.35)]"
         >
-          <p className="text-[14px] font-semibold text-ink">
-            Release checklist
-          </p>
+          <p className="text-[14px] font-semibold text-ink">{t.checklist}</p>
           <ul className="mt-2 grid gap-2">
-            {checks.map((c) => (
+            {t.checks.map((c) => (
               <li
                 key={c}
                 data-check
@@ -347,7 +345,7 @@ function AppCard() {
         className="absolute -bottom-5 left-6 flex items-center gap-2 rounded-[14px] border border-sky-100 bg-sky-50 px-4 py-2.5 text-[14px] shadow-[0_12px_30px_-16px_rgb(16_27_43/0.4)]"
       >
         <CloudCheck size={20} weight="duotone" className="text-blue" />
-        Deployed to the cloud · monitored 24/7
+        {t.deployed}
       </div>
     </div>
   );
