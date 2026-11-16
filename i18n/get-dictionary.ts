@@ -1,12 +1,7 @@
 import { notFound } from "next/navigation";
 import { lang } from "next/root-params";
 import { hasLocale, type Locale } from "./config";
-import type { Dictionary } from "./dictionaries/en";
-
-const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
-  id: () => import("./dictionaries/id").then((m) => m.default),
-  en: () => import("./dictionaries/en").then((m) => m.default),
-};
+import { getDictionaryFor, type Dictionary } from "./dictionaries";
 
 /** The current route's locale, read from the `[lang]` root segment. */
 export async function getLocale(): Promise<Locale> {
@@ -16,7 +11,7 @@ export async function getLocale(): Promise<Locale> {
 }
 
 export async function getDictionary(): Promise<Dictionary> {
-  return dictionaries[await getLocale()]();
+  return getDictionaryFor(await getLocale());
 }
 
 export type { Dictionary };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import { locales, localePath } from "@/i18n/config";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
+import { siteName, siteUrl } from "@/lib/site";
 import "../globals.css";
 
 const outfit = Outfit({
@@ -17,10 +18,18 @@ export function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const { meta } = await getDictionary();
+  const other = locales.filter((l) => l !== locale);
   return {
-    metadataBase: new URL("https://nusatechsolution.com"),
+    metadataBase: new URL(siteUrl),
     title: meta.title,
     description: meta.description,
+    applicationName: siteName,
+    authors: [{ name: siteName, url: siteUrl }],
+    publisher: siteName,
+    category: "technology",
+    robots: { index: true, follow: true },
+    // Phone numbers on the page are real links; stop iOS from re-styling them.
+    formatDetection: { telephone: false },
     alternates: {
       canonical: localePath(locale),
       languages: {
@@ -30,12 +39,18 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Nusantara Tech Solution",
+      title: meta.title,
       description: meta.ogDescription,
       url: localePath(locale),
-      siteName: "Nusantara Tech Solution",
+      siteName,
       locale: meta.ogLocale,
+      alternateLocale: other.map((l) => (l === "id" ? "id_ID" : "en_US")),
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.ogDescription,
     },
   };
 }
