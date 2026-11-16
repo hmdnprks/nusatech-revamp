@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { MotionLayer } from "@/components/MotionLayer";
 import { ProcessStory } from "@/components/ProcessStory";
 import { Services } from "@/components/Services";
+import { StructuredData } from "@/components/StructuredData";
 import { Work } from "@/components/Work";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 import { whatsappHref } from "@/lib/content";
@@ -27,6 +28,7 @@ export default async function Home() {
         <Contact />
       </main>
       <SiteFooter />
+      <StructuredData />
       {/* Last, so every section's scroll triggers exist before positions are measured. */}
       <MotionLayer />
     </>

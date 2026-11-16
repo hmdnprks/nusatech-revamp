@@ -6,6 +6,9 @@ const en = {
     ogDescription:
       "Your trusted partner for IT consulting and custom application development.",
     ogLocale: "en_US",
+    ogImageAlt:
+      "Nusantara Tech Solution: custom web, mobile and cloud applications",
+    ogServices: "Web & mobile apps · Cloud · Dashboards",
   },
   nav: {
     home: "Home",

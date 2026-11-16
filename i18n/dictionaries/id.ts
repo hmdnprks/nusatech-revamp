@@ -8,6 +8,9 @@ const id: Dictionary = {
     ogDescription:
       "Mitra tepercaya untuk konsultasi TI dan pengembangan aplikasi sesuai kebutuhan.",
     ogLocale: "id_ID",
+    ogImageAlt:
+      "Nusantara Tech Solution: pengembangan aplikasi web, mobile, dan cloud",
+    ogServices: "Aplikasi web & mobile · Cloud · Dashboard",
   },
   nav: {
     home: "Beranda",
