@@ -9,12 +9,21 @@ import {
   useState,
 } from "react";
 import { LogoMark } from "@/components/Logo";
-import { contact, nav } from "@/lib/content";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { navIds, type NavId } from "@/lib/content";
 import { scrollToId } from "@/components/MotionLayer";
 
-type NavId = (typeof nav)[number]["id"];
-
-export function Header() {
+export function Header({
+  t,
+  locale,
+  whatsapp,
+}: {
+  t: Dictionary["nav"];
+  locale: Locale;
+  whatsapp: string;
+}) {
   const [active, setActive] = useState<NavId>("home");
   const [open, setOpen] = useState(false);
   const [indicator, setIndicator] = useState<{ x: number; w: number } | null>(
@@ -26,8 +35,8 @@ export function Header() {
 
   // Scroll spy: the section whose top has passed the upper third of the viewport is current.
   useEffect(() => {
-    const sections = nav
-      .map((item) => document.getElementById(item.id))
+    const sections = navIds
+      .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
     const update = () => {
       const line = window.innerHeight * 0.35;
@@ -92,9 +101,11 @@ export function Header() {
     scrollToId(id);
   };
 
+  const items = navIds.map((id) => ({ id, label: t[id] }));
+
   return (
     <header className="sticky top-0 z-40 bg-bg/85 backdrop-blur-md">
-      <div className="mx-auto flex h-[76px] max-w-[1240px] items-center gap-6 px-5 md:h-[84px] md:px-8">
+      <div className="mx-auto flex h-[76px] max-w-[1240px] items-center gap-3 px-5 md:h-[84px] md:px-8 lg:gap-6">
         <a
           href="#home"
           onClick={go("home")}
@@ -105,8 +116,8 @@ export function Header() {
         </a>
 
         <nav
-          aria-label="Main"
-          className="relative mx-auto hidden rounded-[14px] border border-line bg-card p-[5px] md:flex"
+          aria-label={t.main}
+          className="relative mx-auto hidden rounded-[14px] border border-line bg-card p-[5px] lg:flex"
         >
           {indicator && (
             <span
@@ -121,7 +132,7 @@ export function Header() {
               }}
             />
           )}
-          {nav.map((item) => (
+          {items.map((item) => (
             <a
               key={item.id}
               ref={(el) => {
@@ -142,20 +153,26 @@ export function Header() {
         </nav>
 
         <a
-          href={contact.whatsapp}
+          href={whatsapp}
           target="_blank"
           rel="noopener"
-          className="btn btn-dark ml-auto hidden h-[46px] md:ml-0 md:inline-flex"
+          className="btn btn-dark hidden h-[46px] lg:inline-flex"
         >
-          Get Started
+          {t.getStarted}
         </a>
+
+        <LanguageSwitcher
+          current={locale}
+          label={t.language}
+          className="ml-auto lg:ml-0"
+        />
 
         <button
           type="button"
-          className="ml-auto grid size-11 place-items-center rounded-[12px] border border-line bg-card md:hidden"
+          className="grid size-11 place-items-center rounded-[12px] border border-line bg-card lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? t.closeMenu : t.openMenu}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={22} /> : <List size={22} />}
@@ -164,14 +181,14 @@ export function Header() {
 
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-line px-5 transition-[max-height,opacity] duration-300 ease-out md:hidden ${
+        className={`overflow-hidden border-line px-5 transition-[max-height,opacity] duration-300 ease-out lg:hidden ${
           open
             ? "max-h-[420px] border-b opacity-100"
             : "pointer-events-none max-h-0 opacity-0"
         }`}
       >
-        <nav aria-label="Mobile" className="flex flex-col pb-5">
-          {nav.map((item) => (
+        <nav aria-label={t.main} className="flex flex-col pb-5">
+          {items.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -183,13 +200,13 @@ export function Header() {
             </a>
           ))}
           <a
-            href={contact.whatsapp}
+            href={whatsapp}
             target="_blank"
             rel="noopener"
             tabIndex={open ? 0 : -1}
             className="btn btn-dark mt-3"
           >
-            Get Started
+            {t.getStarted}
           </a>
         </nav>
       </div>

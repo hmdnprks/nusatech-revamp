@@ -5,15 +5,24 @@ import { MotionLayer } from "@/components/MotionLayer";
 import { ProcessStory } from "@/components/ProcessStory";
 import { Services } from "@/components/Services";
 import { Work } from "@/components/Work";
+import { getDictionary, getLocale } from "@/i18n/get-dictionary";
+import { whatsappHref } from "@/lib/content";
 
-export default function Home() {
+export default async function Home() {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+
   return (
     <>
-      <Header />
+      <Header
+        t={dict.nav}
+        locale={locale}
+        whatsapp={whatsappHref(dict.whatsappMessage)}
+      />
       <main>
         <Hero />
         <Services />
-        <ProcessStory />
+        <ProcessStory t={dict.process} />
         <Work />
         <Contact />
       </main>

@@ -1,3 +1,4 @@
+import { getDictionary } from "@/i18n/get-dictionary";
 import { projects, type Tint } from "@/lib/content";
 
 const thumb: Record<Tint, string> = {
@@ -12,7 +13,10 @@ const accent: Record<Tint, string> = {
   sun: "bg-sun",
 };
 
-export function Work() {
+export async function Work() {
+  const t = (await getDictionary()).work;
+  const names: Partial<Record<string, string>> = t.names;
+
   return (
     <section
       id="work"
@@ -26,11 +30,10 @@ export function Work() {
           data-reveal="rise"
           className="text-[36px] leading-[1.08] md:text-[46px]"
         >
-          Selected work
+          {t.title}
         </h2>
         <p data-reveal="rise" className="max-w-[420px] text-body">
-          Systems we&apos;ve designed and built for universities, foundations
-          and businesses since 2020.
+          {t.intro}
         </p>
       </div>
 
@@ -40,14 +43,14 @@ export function Work() {
       >
         {projects.map((p, i) => (
           <li
-            key={p.name}
+            key={p.key}
             data-reveal="drop"
             className="tile flex flex-col p-2.5"
           >
             <div data-reveal="mask" className="overflow-hidden rounded-[16px]">
               <div className={`relative h-[180px] ${thumb[p.tint]}`}>
                 <span className="absolute top-3.5 left-3.5 rounded-full bg-white/90 px-3 py-1 text-[13px]">
-                  {p.sector}
+                  {t.sectors[p.sector]}
                 </span>
                 <div
                   aria-hidden="true"
@@ -71,13 +74,15 @@ export function Work() {
             </div>
             <div className="flex flex-1 flex-col px-3 pt-4 pb-3">
               <div className="flex items-start justify-between gap-4">
-                <h3 className="text-[20px] leading-snug">{p.name}</h3>
+                <h3 className="text-[20px] leading-snug">
+                  {names[p.key] ?? p.name}
+                </h3>
                 <span className="pt-0.5 text-[15px] text-body tabular-nums">
                   {p.year}
                 </span>
               </div>
               <p className="text-[15px] font-medium text-ink/80">{p.client}</p>
-              <p className="mt-2 text-[15px] text-body">{p.summary}</p>
+              <p className="mt-2 text-[15px] text-body">{t.summaries[p.key]}</p>
             </div>
           </li>
         ))}
