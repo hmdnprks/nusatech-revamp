@@ -1,19 +1,16 @@
 import type { Dictionary } from "@/i18n/dictionaries/en";
 
 export const contact = {
-  phoneDisplay: "+62 877-7733-1908",
-  phoneHref: "tel:+6287777331908",
   email: "admin@nusatechsolution.com",
-  addressLines: [
-    "Jl. Kunir No. 53, Pondok Cabe Udik",
-    "Pamulang, Tangerang Selatan, Banten 15418",
-  ],
-  mapsHref:
-    "https://maps.google.com/?q=Jl.+Kunir+No.+53+Pondok+Cabe+Udik+Pamulang",
+  area: "Jakarta",
+  mapsHref: "https://maps.google.com/?q=Jakarta",
 };
 
-export const whatsappHref = (message: string) =>
-  `https://wa.me/6287777331908?text=${encodeURIComponent(message)}`;
+// The address split at "@", so narrow screens can wrap it there and not mid-word.
+export const emailParts = contact.email.split("@") as [string, string];
+
+export const mailtoHref = ({ subject, body }: Dictionary["email"]) =>
+  `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 export const navIds = [
   "home",
@@ -45,7 +42,6 @@ export const projects: {
   client: string;
   /** Client initials, shown on the thumbnail until real screenshots exist. */
   short: string;
-  year: number;
   sector: SectorKey;
   tint: Tint;
 }[] = [
@@ -54,7 +50,6 @@ export const projects: {
     name: "Campus Mental Health Screening",
     client: "Universitas Gadjah Mada",
     short: "UGM",
-    year: 2025,
     sector: "health",
     tint: "sky",
   },
@@ -63,7 +58,6 @@ export const projects: {
     name: "Carbon Calculator",
     client: "Universitas Brawijaya",
     short: "UB",
-    year: 2024,
     sector: "education",
     tint: "sky",
   },
@@ -72,7 +66,6 @@ export const projects: {
     name: "Rora Virtual Cashier",
     client: "Rora",
     short: "Rora",
-    year: 2024,
     sector: "retail",
     tint: "sun",
   },
@@ -81,7 +74,6 @@ export const projects: {
     name: "Econosphere 2",
     client: "Universitas Gadjah Mada",
     short: "UGM",
-    year: 2023,
     sector: "education",
     tint: "sky",
   },
@@ -90,7 +82,6 @@ export const projects: {
     name: "GoInfaq & AbonKita Qurban",
     client: "Inisiatif Zakat Indonesia",
     short: "IZI",
-    year: 2021,
     sector: "social",
     tint: "sun",
   },
@@ -99,7 +90,6 @@ export const projects: {
     name: "Zakatpedia",
     client: "Inisiatif Zakat Indonesia",
     short: "IZI",
-    year: 2020,
     sector: "social",
     tint: "sun",
   },

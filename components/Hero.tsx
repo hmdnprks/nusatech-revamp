@@ -1,13 +1,23 @@
-import { ArrowDown, WhatsappLogo } from "@phosphor-icons/react/ssr";
+import {
+  ArrowDown,
+  Browser,
+  CloudCheck,
+  DeviceMobile,
+  EnvelopeSimple,
+} from "@phosphor-icons/react/ssr";
 import { Fragment } from "react";
 import { LogoScene } from "@/components/LogoScene";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { whatsappHref } from "@/lib/content";
+import { mailtoHref, projects } from "@/lib/content";
+
+const buildIcons = [Browser, DeviceMobile, CloudCheck];
 
 export async function Hero() {
   const dict = await getDictionary();
   const t = dict.hero;
-  const whatsapp = whatsappHref(dict.whatsappMessage);
+
+  // One row per client, in portfolio order.
+  const clients = [...new Set(projects.map((p) => p.client))];
 
   return (
     <section id="home" className="mx-auto max-w-[1240px] px-5 pt-3 md:px-8">
@@ -41,13 +51,8 @@ export async function Hero() {
             data-hero-item="copy"
             className="mt-8 flex flex-wrap gap-2.5 lg:mt-auto lg:pt-8"
           >
-            <a
-              href={whatsapp}
-              target="_blank"
-              rel="noopener"
-              className="btn btn-dark"
-            >
-              <WhatsappLogo size={20} aria-hidden="true" /> {t.primary}
+            <a href={mailtoHref(dict.email)} className="btn btn-dark">
+              <EnvelopeSimple size={20} aria-hidden="true" /> {t.primary}
             </a>
             <a href="#work" className="btn btn-soft">
               {t.secondary} <ArrowDown size={18} aria-hidden="true" />
@@ -70,40 +75,45 @@ export async function Hero() {
           <LogoScene className="order-1 h-[220px] sm:order-2 sm:h-auto sm:min-h-[300px]" />
         </div>
 
-        {/* 24H service */}
+        {/* What we build */}
         <div
           data-hero-item="tile"
           className="tile border-sun-100 bg-sun-50 p-6 sm:p-7"
         >
-          <h2 className="text-[22px]">{t.service.title}</h2>
-          <p className="mt-4 text-[76px] leading-none font-semibold tracking-[-0.04em] text-ink tabular-nums">
-            <span data-count="24">24</span>/7
-          </p>
-          <p className="mt-2 text-[15px]">{t.service.body}</p>
+          <h2 className="text-[22px]">{t.build.title}</h2>
+          <ul className="mt-4 grid gap-3.5">
+            {t.build.items.map((item, i) => {
+              const Icon = buildIcons[i];
+              return (
+                <li key={item.name} className="flex gap-3">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-[12px] bg-card text-sun-ink">
+                    <Icon size={22} weight="duotone" aria-hidden="true" />
+                  </span>
+                  <span className="text-[14px] leading-snug text-body">
+                    <b className="block text-[16px] font-semibold text-ink">
+                      {item.name}
+                    </b>
+                    {item.body}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
-        {/* Cloud support */}
+        {/* Clients we've served */}
         <div
           data-hero-item="tile"
           className="tile border-sky-100 bg-sky-50 p-6 sm:p-7"
         >
-          <h2 className="text-[22px]">{t.cloud.title}</h2>
+          <h2 className="text-[22px]">{t.clients.title}</h2>
           <ul className="mt-4 grid gap-2">
-            {t.cloud.services.map((s) => (
+            {clients.map((c) => (
               <li
-                key={s.name}
-                data-status
-                data-state="ok"
-                className="group flex items-center justify-between rounded-[12px] bg-card px-3.5 py-2 text-[14px]"
+                key={c}
+                className="rounded-[12px] bg-card px-3.5 py-2.5 text-[14px] font-medium text-ink"
               >
-                {s.name}
-                <span className="flex items-center gap-1.5 font-medium text-mint group-data-[state=wait]:text-body">
-                  <i className="size-2 rounded-full bg-mint transition-colors duration-300 group-data-[state=wait]:animate-pulse group-data-[state=wait]:bg-line" />
-                  <span className="group-data-[state=wait]:hidden">{s.ok}</span>
-                  <span className="hidden group-data-[state=wait]:inline">
-                    {t.cloud.checking}
-                  </span>
-                </span>
+                {c}
               </li>
             ))}
           </ul>

@@ -20,12 +20,13 @@ Design Read: *company profile landing page for institutional and SME buyers, in 
 
 ## Decisions and reasons
 
-- **Layout (bento tiles):** owner-selected direction. The tiles let each commitment show itself (code, 24/7 clock, service status) instead of being listed. Recorded as a deliberate override of antislop R-05's "bento as default" lock (audit 001, item 12).
+- **Hero facts:** the hero shows only what is true without a live feed: what the company builds (web, mobile, cloud) and the clients in the portfolio, listed from `lib/content.ts`. No project counts or years. No 24/7 promise and no simulated status lights.
+- **Layout (bento tiles):** owner-selected direction. The tiles give each fact its own space (the logo, what we build, the clients served) instead of one long list. Recorded as a deliberate override of antislop R-05's "bento as default" lock (audit 001, item 12).
 - **Typeface, Outfit (400/500/600):** round, geometric and friendly at display sizes while staying readable at 15 to 17px; it matches the soft tile radius and the approachable ENERGY 2 tone. Self-hosted via `next/font`.
-- **Colour:** brand blues from the logo are the core (`navy #1B5A8A`, `blue #1A7CC0`, `sky #3DB8FF`), ink `#101B2B` for text and dark surfaces, one warm accent `sun #FFD66B` used for the 24H tile, sticky notes and community/commerce project cards. `mint #11845A` is semantic only (healthy, done, live). No gradients.
+- **Colour:** brand blues from the logo are the core (`navy #1B5A8A`, `blue #1A7CC0`, `sky #3DB8FF`), ink `#101B2B` for text and dark surfaces, one warm accent `sun #FFD66B` used for the "What we build" tile, sticky notes and community/commerce project cards. `mint #11845A` is semantic only (healthy, done, live). No gradients.
 - **Project thumbnails:** flat tints, sky for institutional clients and sun for community and commerce clients. They show client initials until real screenshots arrive (TODO in `components/Work.tsx`).
 - **Theme:** light only. The audience reads this during office hours on work machines, and the logo's navy stroke disappears on dark backgrounds. No dark toggle is planned.
-- **Icons, Phosphor duotone:** its rounded two-tone glyphs match the soft tiles; used only where they speed recognition (feature tiles, contact channels, menu). WhatsApp and the cloud check icon carry real meaning.
+- **Icons, Phosphor duotone:** its rounded two-tone glyphs match the soft tiles; used only where they speed recognition (feature tiles, contact channels, menu). The envelope and the cloud check icon carry real meaning.
 - **Monospace:** only in the process card's sprint chip, where it represents tooling.
 - **3D:** one object only, the logo's N extruded in the hero's brand tile (Three.js, `lib/logo-three.ts`). It replaces the invented code snippet (antislop audit 001, item 13) and makes the identity motif the hero's centrepiece.
 - **Radius:** 14px buttons, 24px tiles, 32px for the closing contact block; pills only for labels and status.
@@ -34,7 +35,7 @@ Design Read: *company profile landing page for institutional and SME buyers, in 
 
 ## Motion
 
-- **Hero:** words rise from a line mask; tiles set down in reading order; the 24 counts up; service statuses report in. First load only.
+- **Hero:** words rise from a line mask; tiles set down in reading order. First load only.
 - **3D logo:** the two strokes slide in and lock together once, then the mark turns toward a mouse pointer over its tile and settles back when it leaves. It draws frames only while moving, pauses off screen, loads Three.js lazily, and falls back to the flat SVG mark under reduced motion or without WebGL.
 - **Sections:** one reveal each, matched to content (cards set down, thumbnails unmask, labels pop). Never replayed.
 - **Process:** on screens 1024px and wider, the section pins and scrolling moves one client app from wireframe to live; scrolling back reverses it.
@@ -44,4 +45,5 @@ Design Read: *company profile landing page for institutional and SME buyers, in 
 
 - English and Indonesian copy live in `i18n/dictionaries/`; Indonesian is the default.
 - No em dashes. No numbers or claims without a source in the company's own documents.
+- Email is the only contact channel: every contact button opens a prefilled email to admin@nusatechsolution.com. No phone number or WhatsApp link; the office is shown as its area only (Jakarta).
 - Calls to action name the action ("Discuss your project", "See our work").

@@ -4,7 +4,7 @@ const id: Dictionary = {
   meta: {
     title: "Nusantara Tech Solution | Transforming Ideas into Digital Success",
     description:
-      "Pengembangan aplikasi web, mobile, dan cloud untuk universitas, lembaga, dan bisnis yang sedang bertumbuh. Konsultan TI dan pengembang aplikasi dari Tangerang Selatan.",
+      "Pengembangan aplikasi web, mobile, dan cloud untuk universitas, lembaga, dan bisnis yang sedang bertumbuh. Konsultan TI dan pengembang aplikasi dari Jakarta.",
     ogDescription:
       "Mitra tepercaya untuk konsultasi TI dan pengembangan aplikasi sesuai kebutuhan.",
     ogLocale: "id_ID",
@@ -24,8 +24,10 @@ const id: Dictionary = {
     main: "Utama",
     language: "Bahasa",
   },
-  whatsappMessage:
-    "Halo Nusatech, saya ingin berkonsultasi tentang pembuatan aplikasi.",
+  email: {
+    subject: "Konsultasi proyek",
+    body: "Halo Nusatech,\n\nSaya ingin berkonsultasi tentang pembuatan aplikasi.\n\n",
+  },
   hero: {
     titleLines: [
       { text: "Kami selesaikan tantangan" },
@@ -39,18 +41,16 @@ const id: Dictionary = {
       title: "Transforming ideas into digital success",
       body: "Sistem untuk universitas, lembaga, dan bisnis yang bertumbuh sejak 2020.",
     },
-    service: {
-      title: "Layanan 24 Jam",
-      body: "Dukungan kapan pun Anda butuhkan.",
-    },
-    cloud: {
-      title: "Dukungan Cloud",
-      checking: "Memeriksa",
-      services: [
-        { name: "API", ok: "Normal" },
-        { name: "Database", ok: "Normal" },
-        { name: "Cadangan", ok: "Harian" },
+    build: {
+      title: "Yang kami bangun",
+      items: [
+        { name: "Web", body: "Situs, portal, dan dashboard admin" },
+        { name: "Mobile", body: "Aplikasi iOS dan Android" },
+        { name: "Cloud", body: "Hosting, API, dan perawatan setelah rilis" },
       ],
+    },
+    clients: {
+      title: "Klien kami",
     },
   },
   services: {
@@ -72,7 +72,7 @@ const id: Dictionary = {
     response: {
       title: "Respons Cepat",
       body: "Permintaan Anda cepat ditangani, dan aplikasi terasa cepat bagi pengguna.",
-      channel: "Hubungi tim langsung via WhatsApp",
+      channel: "Kirim email langsung ke tim",
     },
     why: {
       title: "Mengapa Nusatech?",
@@ -161,10 +161,9 @@ const id: Dictionary = {
   contact: {
     title: "Siap memulai?",
     body: "Punya ide digital? Ceritakan kepada kami, dan kami bantu mewujudkannya menjadi produk yang disukai pengguna Anda.",
-    cta: "Chat via WhatsApp",
-    phone: "Telepon",
+    cta: "Kirim email",
     email: "Email",
-    office: "Kantor",
+    office: "Berbasis di",
     tagline:
       "Mitra tepercaya untuk konsultasi TI dan pengembangan aplikasi sesuai kebutuhan.",
   },

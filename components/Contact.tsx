@@ -1,12 +1,7 @@
-import {
-  EnvelopeSimple,
-  MapPin,
-  Phone,
-  WhatsappLogo,
-} from "@phosphor-icons/react/ssr";
+import { EnvelopeSimple, MapPin } from "@phosphor-icons/react/ssr";
 import { LogoMark } from "@/components/Logo";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { contact, whatsappHref } from "@/lib/content";
+import { contact, emailParts, mailtoHref } from "@/lib/content";
 
 export async function Contact() {
   const dict = await getDictionary();
@@ -14,20 +9,19 @@ export async function Contact() {
 
   const channels = [
     {
-      label: t.phone,
-      value: contact.phoneDisplay,
-      href: contact.phoneHref,
-      Icon: Phone,
-    },
-    {
       label: t.email,
-      value: contact.email,
+      value: (
+        <>
+          {emailParts[0]}
+          <wbr />@{emailParts[1]}
+        </>
+      ),
       href: `mailto:${contact.email}`,
       Icon: EnvelopeSimple,
     },
     {
       label: t.office,
-      value: contact.addressLines.join(", "),
+      value: contact.area,
       href: contact.mapsHref,
       Icon: MapPin,
       external: true,
@@ -55,16 +49,15 @@ export async function Contact() {
             <p className="mt-3 max-w-[560px] text-[#b5c2d1]">{t.body}</p>
           </div>
           <a
-            href={whatsappHref(dict.whatsappMessage)}
-            target="_blank"
-            rel="noopener"
+            href={mailtoHref(dict.email)}
             className="btn btn-sky h-[58px] self-start lg:self-auto"
           >
-            <WhatsappLogo size={22} weight="fill" aria-hidden="true" /> {t.cta}
+            <EnvelopeSimple size={22} weight="fill" aria-hidden="true" />{" "}
+            {t.cta}
           </a>
         </div>
 
-        <ul className="relative mt-12 grid gap-2 border-t border-white/10 pt-6 text-[15px] sm:grid-cols-3 sm:gap-4">
+        <ul className="relative mt-12 grid gap-2 border-t border-white/10 pt-6 text-[15px] sm:grid-cols-2 sm:gap-4 lg:max-w-[760px]">
           {channels.map(({ label, value, href, Icon, external }) => (
             <li key={label}>
               <a
@@ -77,9 +70,9 @@ export async function Contact() {
                   aria-hidden="true"
                   className="mt-0.5 shrink-0 text-sky"
                 />
-                <span>
+                <span className="min-w-0">
                   <span className="block text-[#b5c2d1]">{label}</span>
-                  <span className="break-words underline-offset-4 group-hover:underline">
+                  <span className="underline-offset-4 [overflow-wrap:anywhere] group-hover:underline">
                     {value}
                   </span>
                 </span>

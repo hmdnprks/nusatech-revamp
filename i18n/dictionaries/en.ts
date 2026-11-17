@@ -2,7 +2,7 @@ const en = {
   meta: {
     title: "Nusantara Tech Solution | Transforming Ideas into Digital Success",
     description:
-      "Custom web, mobile and cloud applications for universities, foundations and growing businesses. IT consulting and application development from Tangerang Selatan, Indonesia.",
+      "Custom web, mobile and cloud applications for universities, foundations and growing businesses. IT consulting and application development from Jakarta, Indonesia.",
     ogDescription:
       "Your trusted partner for IT consulting and custom application development.",
     ogLocale: "en_US",
@@ -22,8 +22,10 @@ const en = {
     main: "Main",
     language: "Language",
   },
-  whatsappMessage:
-    "Hello Nusatech, I'd like to discuss building an application.",
+  email: {
+    subject: "Project enquiry",
+    body: "Hello Nusatech,\n\nI'd like to discuss building an application.\n\n",
+  },
   hero: {
     titleLines: [
       { text: "Let us solve your critical" },
@@ -38,18 +40,16 @@ const en = {
       title: "Transforming ideas into digital success",
       body: "Systems for universities, foundations and growing businesses since 2020.",
     },
-    service: {
-      title: "24H Service",
-      body: "Support around the clock, at any hour.",
-    },
-    cloud: {
-      title: "Cloud Support",
-      checking: "Checking",
-      services: [
-        { name: "API", ok: "Healthy" },
-        { name: "Database", ok: "Healthy" },
-        { name: "Backups", ok: "Daily" },
+    build: {
+      title: "What we build",
+      items: [
+        { name: "Web", body: "Websites, portals and admin dashboards" },
+        { name: "Mobile", body: "iOS and Android apps" },
+        { name: "Cloud", body: "Hosting, APIs and upkeep after launch" },
       ],
+    },
+    clients: {
+      title: "Clients we've served",
     },
   },
   services: {
@@ -71,7 +71,7 @@ const en = {
     response: {
       title: "Faster Response",
       body: "Quick turnaround on your requests, and fast-loading applications for your users.",
-      channel: "Reach the team directly on WhatsApp",
+      channel: "Email the team directly",
     },
     why: {
       title: "Why Nusatech?",
@@ -160,10 +160,9 @@ const en = {
   contact: {
     title: "Ready to get started?",
     body: "Have a digital idea? Tell us about it, and we'll help shape it into a product your users love.",
-    cta: "Chat on WhatsApp",
-    phone: "Phone",
+    cta: "Email us",
     email: "Email",
-    office: "Office",
+    office: "Based in",
     tagline:
       "Your trusted partner for IT consulting and custom application development.",
   },

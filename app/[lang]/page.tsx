@@ -7,7 +7,7 @@ import { Services } from "@/components/Services";
 import { StructuredData } from "@/components/StructuredData";
 import { Work } from "@/components/Work";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
-import { whatsappHref } from "@/lib/content";
+import { mailtoHref } from "@/lib/content";
 
 export default async function Home() {
   const locale = await getLocale();
@@ -15,11 +15,7 @@ export default async function Home() {
 
   return (
     <>
-      <Header
-        t={dict.nav}
-        locale={locale}
-        whatsapp={whatsappHref(dict.whatsappMessage)}
-      />
+      <Header t={dict.nav} locale={locale} mailto={mailtoHref(dict.email)} />
       <main>
         <Hero />
         <Services />

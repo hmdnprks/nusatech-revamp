@@ -3,8 +3,10 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { defaultLocale, hasLocale, type Locale } from "@/i18n/config";
 import { getDictionaryFor } from "@/i18n/dictionaries";
+import { emailParts, projects } from "@/lib/content";
 
 const size = { width: 1200, height: 630 };
+const clientShorts = [...new Set(projects.map((p) => p.short))];
 
 type Params = { lang: string };
 
@@ -121,10 +123,10 @@ export default async function OpenGraphImage({
           }}
         >
           <span style={{ fontSize: 22, color: "#a8b4c3" }}>
-            nusatechsolution.com
+            {emailParts[0]}@
           </span>
-          <span style={{ fontSize: 30, fontWeight: 600, marginTop: 6 }}>
-            +62 877-7733-1908
+          <span style={{ fontSize: 26, fontWeight: 600, marginTop: 4 }}>
+            {emailParts[1]}
           </span>
         </div>
         <div
@@ -139,19 +141,32 @@ export default async function OpenGraphImage({
           }}
         >
           <span style={{ fontSize: 24, fontWeight: 600 }}>
-            {dict.hero.service.title}
+            {dict.hero.clients.title}
           </span>
-          <span
+          <div
             style={{
-              fontSize: 96,
-              fontWeight: 600,
-              lineHeight: 1,
-              letterSpacing: "-0.04em",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 10,
               marginTop: "auto",
             }}
           >
-            24/7
-          </span>
+            {clientShorts.map((short) => (
+              <span
+                key={short}
+                style={{
+                  padding: "8px 16px",
+                  background: "#ffffff",
+                  borderRadius: 14,
+                  fontSize: 30,
+                  fontWeight: 600,
+                  color: "#1b5a8a",
+                }}
+              >
+                {short}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>,

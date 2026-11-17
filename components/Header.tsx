@@ -18,11 +18,11 @@ import { scrollToId } from "@/components/MotionLayer";
 export function Header({
   t,
   locale,
-  whatsapp,
+  mailto,
 }: {
   t: Dictionary["nav"];
   locale: Locale;
-  whatsapp: string;
+  mailto: string;
 }) {
   const [active, setActive] = useState<NavId>("home");
   const [open, setOpen] = useState(false);
@@ -153,9 +153,7 @@ export function Header({
         </nav>
 
         <a
-          href={whatsapp}
-          target="_blank"
-          rel="noopener"
+          href={mailto}
           className="btn btn-dark hidden h-[46px] lg:inline-flex"
         >
           {t.cta}
@@ -206,12 +204,7 @@ export function Header({
               {item.label}
             </a>
           ))}
-          <a
-            href={whatsapp}
-            target="_blank"
-            rel="noopener"
-            className="btn btn-dark mt-3"
-          >
+          <a href={mailto} className="btn btn-dark mt-3">
             {t.cta}
           </a>
         </nav>

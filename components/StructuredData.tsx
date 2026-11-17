@@ -4,7 +4,7 @@ import { localeUrl, siteName, siteUrl } from "@/lib/site";
 
 /**
  * schema.org description of the business for search engines. Only facts the
- * company has published: name, contact details, address and services.
+ * company has published: name, email, area and services.
  */
 export async function StructuredData() {
   const locale = await getLocale();
@@ -21,13 +21,10 @@ export async function StructuredData() {
     description: meta.description,
     slogan: "Transforming Ideas into Digital Success",
     email: contact.email,
-    telephone: "+62-877-7733-1908",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Jl. Kunir No. 53, Pondok Cabe Udik",
-      addressLocality: "Pamulang",
-      addressRegion: "Banten",
-      postalCode: "15418",
+      addressLocality: "Jakarta",
+      addressRegion: "DKI Jakarta",
       addressCountry: "ID",
     },
     areaServed: { "@type": "Country", name: "Indonesia" },
