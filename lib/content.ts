@@ -1,19 +1,16 @@
 import type { Dictionary } from "@/i18n/dictionaries/en";
 
 export const contact = {
-  phoneDisplay: "+62 877-7733-1908",
-  phoneHref: "tel:+6287777331908",
   email: "admin@nusatechsolution.com",
-  addressLines: [
-    "Jl. Kunir No. 53, Pondok Cabe Udik",
-    "Pamulang, Tangerang Selatan, Banten 15418",
-  ],
-  mapsHref:
-    "https://maps.google.com/?q=Jl.+Kunir+No.+53+Pondok+Cabe+Udik+Pamulang",
+  area: "Jakarta",
+  mapsHref: "https://maps.google.com/?q=Jakarta",
 };
 
-export const whatsappHref = (message: string) =>
-  `https://wa.me/6287777331908?text=${encodeURIComponent(message)}`;
+// The address split at "@", so narrow screens can wrap it there and not mid-word.
+export const emailParts = contact.email.split("@") as [string, string];
+
+export const mailtoHref = ({ subject, body }: Dictionary["email"]) =>
+  `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 export const navIds = [
   "home",

@@ -2,11 +2,11 @@ import {
   Check,
   Code,
   Stack,
+  EnvelopeSimple,
   Wallet,
-  WhatsappLogo,
 } from "@phosphor-icons/react/ssr";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { certifications, contact, whatsappHref } from "@/lib/content";
+import { certifications, emailParts, mailtoHref } from "@/lib/content";
 
 export async function Services() {
   const dict = await getDictionary();
@@ -69,18 +69,17 @@ export async function Services() {
               <p className="mt-1.5 text-[15px] text-body">{t.response.body}</p>
             </div>
             <a
-              href={whatsappHref(dict.whatsappMessage)}
-              target="_blank"
-              rel="noopener"
+              href={mailtoHref(dict.email)}
               className="group flex min-h-11 items-center gap-3.5 rounded-[16px] bg-bg p-4 transition-colors hover:bg-sky-50"
             >
-              <span className="grid size-11 shrink-0 place-items-center rounded-[12px] bg-ink text-white">
-                <WhatsappLogo size={22} aria-hidden="true" />
+              <span className="grid size-11 shrink-0 place-items-center rounded-[12px] bg-ink text-white max-[359px]:hidden">
+                <EnvelopeSimple size={22} aria-hidden="true" />
               </span>
-              <span className="text-[14px] text-body">
+              <span className="min-w-0 text-[14px] text-body">
                 {t.response.channel}
-                <b className="block text-[16px] font-semibold text-ink group-hover:underline">
-                  {contact.phoneDisplay}
+                <b className="block text-[15px] font-semibold [overflow-wrap:anywhere] text-ink group-hover:underline sm:text-[16px]">
+                  {emailParts[0]}
+                  <wbr />@{emailParts[1]}
                 </b>
               </span>
             </a>

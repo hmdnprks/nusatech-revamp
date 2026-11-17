@@ -1,13 +1,12 @@
-import { ArrowDown, WhatsappLogo } from "@phosphor-icons/react/ssr";
+import { ArrowDown, EnvelopeSimple } from "@phosphor-icons/react/ssr";
 import { Fragment } from "react";
 import { LogoScene } from "@/components/LogoScene";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { whatsappHref } from "@/lib/content";
+import { mailtoHref } from "@/lib/content";
 
 export async function Hero() {
   const dict = await getDictionary();
   const t = dict.hero;
-  const whatsapp = whatsappHref(dict.whatsappMessage);
 
   return (
     <section id="home" className="mx-auto max-w-[1240px] px-5 pt-3 md:px-8">
@@ -41,13 +40,8 @@ export async function Hero() {
             data-hero-item="copy"
             className="mt-8 flex flex-wrap gap-2.5 lg:mt-auto lg:pt-8"
           >
-            <a
-              href={whatsapp}
-              target="_blank"
-              rel="noopener"
-              className="btn btn-dark"
-            >
-              <WhatsappLogo size={20} aria-hidden="true" /> {t.primary}
+            <a href={mailtoHref(dict.email)} className="btn btn-dark">
+              <EnvelopeSimple size={20} aria-hidden="true" /> {t.primary}
             </a>
             <a href="#work" className="btn btn-soft">
               {t.secondary} <ArrowDown size={18} aria-hidden="true" />

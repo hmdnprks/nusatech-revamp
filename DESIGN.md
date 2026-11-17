@@ -25,7 +25,7 @@ Design Read: *company profile landing page for institutional and SME buyers, in 
 - **Colour:** brand blues from the logo are the core (`navy #1B5A8A`, `blue #1A7CC0`, `sky #3DB8FF`), ink `#101B2B` for text and dark surfaces, one warm accent `sun #FFD66B` used for the 24H tile, sticky notes and community/commerce project cards. `mint #11845A` is semantic only (healthy, done, live). No gradients.
 - **Project thumbnails:** flat tints, sky for institutional clients and sun for community and commerce clients. They show client initials until real screenshots arrive (TODO in `components/Work.tsx`).
 - **Theme:** light only. The audience reads this during office hours on work machines, and the logo's navy stroke disappears on dark backgrounds. No dark toggle is planned.
-- **Icons, Phosphor duotone:** its rounded two-tone glyphs match the soft tiles; used only where they speed recognition (feature tiles, contact channels, menu). WhatsApp and the cloud check icon carry real meaning.
+- **Icons, Phosphor duotone:** its rounded two-tone glyphs match the soft tiles; used only where they speed recognition (feature tiles, contact channels, menu). The envelope and the cloud check icon carry real meaning.
 - **Monospace:** only in the process card's sprint chip, where it represents tooling.
 - **3D:** one object only, the logo's N extruded in the hero's brand tile (Three.js, `lib/logo-three.ts`). It replaces the invented code snippet (antislop audit 001, item 13) and makes the identity motif the hero's centrepiece.
 - **Radius:** 14px buttons, 24px tiles, 32px for the closing contact block; pills only for labels and status.
@@ -44,4 +44,5 @@ Design Read: *company profile landing page for institutional and SME buyers, in 
 
 - English and Indonesian copy live in `i18n/dictionaries/`; Indonesian is the default.
 - No em dashes. No numbers or claims without a source in the company's own documents.
+- Email is the only contact channel: every contact button opens a prefilled email to admin@nusatechsolution.com. No phone number or WhatsApp link; the office is shown as its area only (Jakarta).
 - Calls to action name the action ("Discuss your project", "See our work").

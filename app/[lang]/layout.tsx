@@ -28,8 +28,6 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: siteName,
     category: "technology",
     robots: { index: true, follow: true },
-    // Phone numbers on the page are real links; stop iOS from re-styling them.
-    formatDetection: { telephone: false },
     alternates: {
       canonical: localePath(locale),
       languages: {
