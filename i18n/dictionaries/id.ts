@@ -41,18 +41,16 @@ const id: Dictionary = {
       title: "Transforming ideas into digital success",
       body: "Sistem untuk universitas, lembaga, dan bisnis yang bertumbuh sejak 2020.",
     },
-    service: {
-      title: "Layanan 24 Jam",
-      body: "Dukungan kapan pun Anda butuhkan.",
-    },
-    cloud: {
-      title: "Dukungan Cloud",
-      checking: "Memeriksa",
-      services: [
-        { name: "API", ok: "Normal" },
-        { name: "Database", ok: "Normal" },
-        { name: "Cadangan", ok: "Harian" },
+    build: {
+      title: "Yang kami bangun",
+      items: [
+        { name: "Web", body: "Situs, portal, dan dashboard admin" },
+        { name: "Mobile", body: "Aplikasi iOS dan Android" },
+        { name: "Cloud", body: "Hosting, API, dan perawatan setelah rilis" },
       ],
+    },
+    clients: {
+      title: "Klien kami",
     },
   },
   services: {

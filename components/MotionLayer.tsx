@@ -100,36 +100,6 @@ function playHero() {
     },
     0.15,
   );
-
-  // Inside the tiles: the clock counts up and services report in. The brand
-  // tile's logo assembles itself (LogoScene).
-
-  const counter = document.querySelector<HTMLElement>("[data-count]");
-  if (counter) {
-    counter.textContent = "0";
-    const value = { n: 0 };
-    tl.to(
-      value,
-      {
-        n: Number(counter.dataset.count),
-        duration: 0.8,
-        ease: "power2.out",
-        onUpdate: () => {
-          counter.textContent = String(Math.round(value.n));
-        },
-      },
-      0.35,
-    );
-  }
-
-  document.querySelectorAll<HTMLElement>("[data-status]").forEach((el, i) => {
-    el.setAttribute("data-state", "wait");
-    tl.call(
-      () => el.setAttribute("data-state", "ok"),
-      undefined,
-      0.85 + i * 0.22,
-    );
-  });
 }
 
 function setupReveals() {

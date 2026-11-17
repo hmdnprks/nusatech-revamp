@@ -42,7 +42,6 @@ export const projects: {
   client: string;
   /** Client initials, shown on the thumbnail until real screenshots exist. */
   short: string;
-  year: number;
   sector: SectorKey;
   tint: Tint;
 }[] = [
@@ -51,7 +50,6 @@ export const projects: {
     name: "Campus Mental Health Screening",
     client: "Universitas Gadjah Mada",
     short: "UGM",
-    year: 2025,
     sector: "health",
     tint: "sky",
   },
@@ -60,7 +58,6 @@ export const projects: {
     name: "Carbon Calculator",
     client: "Universitas Brawijaya",
     short: "UB",
-    year: 2024,
     sector: "education",
     tint: "sky",
   },
@@ -69,7 +66,6 @@ export const projects: {
     name: "Rora Virtual Cashier",
     client: "Rora",
     short: "Rora",
-    year: 2024,
     sector: "retail",
     tint: "sun",
   },
@@ -78,7 +74,6 @@ export const projects: {
     name: "Econosphere 2",
     client: "Universitas Gadjah Mada",
     short: "UGM",
-    year: 2023,
     sector: "education",
     tint: "sky",
   },
@@ -87,7 +82,6 @@ export const projects: {
     name: "GoInfaq & AbonKita Qurban",
     client: "Inisiatif Zakat Indonesia",
     short: "IZI",
-    year: 2021,
     sector: "social",
     tint: "sun",
   },
@@ -96,7 +90,6 @@ export const projects: {
     name: "Zakatpedia",
     client: "Inisiatif Zakat Indonesia",
     short: "IZI",
-    year: 2020,
     sector: "social",
     tint: "sun",
   },

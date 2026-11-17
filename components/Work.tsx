@@ -63,14 +63,9 @@ export async function Work() {
               </div>
             </div>
             <div className="flex flex-1 flex-col px-3 pt-4 pb-3">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-[20px] leading-snug">
-                  {names[p.key] ?? p.name}
-                </h3>
-                <span className="pt-0.5 text-[15px] text-body tabular-nums">
-                  {p.year}
-                </span>
-              </div>
+              <h3 className="text-[20px] leading-snug">
+                {names[p.key] ?? p.name}
+              </h3>
               <p className="text-[15px] font-medium text-ink/80">{p.client}</p>
               <p className="mt-2 text-[15px] text-body">{t.summaries[p.key]}</p>
             </div>

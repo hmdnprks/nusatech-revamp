@@ -40,18 +40,16 @@ const en = {
       title: "Transforming ideas into digital success",
       body: "Systems for universities, foundations and growing businesses since 2020.",
     },
-    service: {
-      title: "24H Service",
-      body: "Support around the clock, at any hour.",
-    },
-    cloud: {
-      title: "Cloud Support",
-      checking: "Checking",
-      services: [
-        { name: "API", ok: "Healthy" },
-        { name: "Database", ok: "Healthy" },
-        { name: "Backups", ok: "Daily" },
+    build: {
+      title: "What we build",
+      items: [
+        { name: "Web", body: "Websites, portals and admin dashboards" },
+        { name: "Mobile", body: "iOS and Android apps" },
+        { name: "Cloud", body: "Hosting, APIs and upkeep after launch" },
       ],
+    },
+    clients: {
+      title: "Clients we've served",
     },
   },
   services: {
